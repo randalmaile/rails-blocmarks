@@ -9,4 +9,6 @@
     .container
       %ul.nav.nav-tabs
         %li= link_to "Blocmarks!", root_path
+        = render partial: "shared/flash_messages" if !flash.empty?
       = yield
+      = javascript_include_tag "application"

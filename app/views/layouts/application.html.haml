@@ -7,6 +7,13 @@
     = csrf_meta_tags
   %body
     .container
+    .user_nav
+      - if current_user
+        Logged in as #{current_user.email}
+        = link_to "Logout", log_out_path 
+      - else
+        = link_to "Sign up", sign_up_path 
+        = link_to "Log in", log_in_path
       %ul.nav.nav-tabs
         %li= link_to "Blocmarks!", root_path
         = render partial: "shared/flash_messages" if !flash.empty?

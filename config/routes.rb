@@ -1,6 +1,6 @@
 Blocmarks::Application.routes.draw do
   get "sign_up" => "users#new", :as => "sign_up"
-  root :to =>  'users#new'
+  root :to =>  'welcome#index'
   resources :users
  
   # The priority is based upon order of creation:

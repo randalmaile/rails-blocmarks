@@ -2,7 +2,6 @@ class HashtagsController < ApplicationController
   def index
   @hashtags = Hashtag.all
   @hashtag_groups = @hashtags.group_by { |t| t.tag }
-
   end
 
   def show

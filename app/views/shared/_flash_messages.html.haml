@@ -10,5 +10,14 @@
   .alert
     %button{type: "button", class: "close", "data-dismiss" => "alert"}&times;
     = flash[:alert]
+    
+    
+- notice = {:notice => "success", :error => "error, :alert => "" }
+- flash.each do |name, msg|
+  .alert.alert-#{notice[name.to_sym]}
+    = content_tag(:button, "&times;", class: "close", "data-dismiss" => "alert")
+    = flash[name.to_sym]
+    
+    
 
 

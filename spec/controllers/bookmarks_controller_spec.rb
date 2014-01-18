@@ -4,28 +4,28 @@ describe BookmarksController do
 
   describe "GET 'index'" do
     it "returns http success" do
-      get 'index'
+      get :index
       response.should be_success
     end
   end
 
   describe "GET 'show'" do
     it "returns http success" do
-      get 'show'
+      get :show, id: 1
       response.should be_success
     end
   end
 
   describe "GET 'new'" do
     it "returns http success" do
-      get 'new'
+      get :new
       response.should be_success
     end
   end
 
   describe "GET 'edit'" do
     it "returns http success" do
-      get 'edit'
+      get :edit, id: 1
       response.should be_success
     end
   end

@@ -5,5 +5,6 @@ FactoryGirl.define do
     url "MyString"
     title "MyString"
     description "MyString"
+    user
   end
 end

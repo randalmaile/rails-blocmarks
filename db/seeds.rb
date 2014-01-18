@@ -30,7 +30,8 @@ end
     bm.update_attribute(:created_at, Time.now - rand(600..31536000)) # set the created_at to a time within the past year
     rand(1..4).times do
       ht_insert = ht.sample
-      bm.hashtags.find_or_create_by!(tag: ht_insert) # not sure what to do here?
+      ht_returned = bm.hashtags.first_or_create!(tag: ht_insert) 
+      Tagmap.create!(hashtag_id: ht_returned.id, bookmark_id: bm.id)
     end
   end
 end

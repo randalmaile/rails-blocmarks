@@ -1,7 +1,6 @@
 - flashcode = { :notice => "success", :error => "error", :alert => nil  }
 - flash.each do |name, msg|
   %div{ :class => "alert #{'alert-' + flashcode[name] if flashcode[name]}" }
-    -# = content_tag(:button, 'x' , class: "close", "data-dismiss" => "alert")
     %button{type: "button", class: "close", "data-dismiss" => "alert"} &times;
     = flash[name]
 

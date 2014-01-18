@@ -1,9 +1,8 @@
 class Hashtag < ActiveRecord::Base
-  attr_accessible :tag, :user
-  belongs_to :user
+  attr_accessible :tag
 
-  has_many :categorizes
-  has_many :bookmarks, :through => :categorizes
+  has_many :tagmaps
+  has_many :bookmarks, :through => :tagmaps
 
   validates :tag, presence: true
 end

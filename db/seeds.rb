@@ -23,15 +23,14 @@ end
   # #Inner iterator - Create 10 bookmarks per user -
   10.times do # - create 10 new bookmarks for every user
     bm = u.bookmarks.create(
-    url: Faker::Internet.url,
-    title: Faker::Lorem.words(rand(1..4)).join(" "),
-    description: Faker::Lorem.paragraph(1)
+      url: Faker::Internet.url,
+      title: Faker::Lorem.words(rand(1..4)).join(" "),
+      description: Faker::Lorem.paragraph(1)
     ) # - create a bookmark within the scope of a unique user instance    
     bm.update_attribute(:created_at, Time.now - rand(600..31536000)) # set the created_at to a time within the past year
     rand(1..4).times do
       ht_insert = ht.sample
-      hasht = bm.hashtags.create(tag: ht_insert)
-      hasht.update_attribute(:user, u)
+      bm.hashtags.find_or_create_by!(tag: ht_insert) # not sure what to do here?
     end
   end
 end

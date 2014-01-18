@@ -1,22 +1,12 @@
-- if flash[:notice]
-  .alert.alert-success
-    %button{type: "button", class: "close", "data-dismiss" => "alert"}&times;
-    = flash[:notice]
-- elsif flash[:error]
-  .alert.alert-error
-    %button{type: "button", class: "close", "data-dismiss" => "alert"}&times;
-    = flash[:error]
-- elsif flash[:alert]
-  .alert
-    %button{type: "button", class: "close", "data-dismiss" => "alert"}&times;
-    = flash[:alert]
-    
-    
-- notice = {:notice => "success", :error => "error, :alert => "" }
+- flashcode = { :notice => "success", :error => "error", :alert => nil  }
 - flash.each do |name, msg|
-  .alert.alert-#{notice[name.to_sym]}
-    = content_tag(:button, "&times;", class: "close", "data-dismiss" => "alert")
-    = flash[name.to_sym]
+  %div{ :class => "alert #{'alert-' + flashcode[name] if flashcode[name]}" }
+    = content_tag(:button, 'x' , class: "close", "data-dismiss" => "alert")
+    = flash[name]
+
+
+   
+
     
     
 

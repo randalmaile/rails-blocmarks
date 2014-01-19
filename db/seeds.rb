@@ -29,9 +29,9 @@ end
     ) # - create a bookmark within the scope of a unique user instance    
     bm.update_attribute(:created_at, Time.now - rand(600..31536000)) # set the created_at to a time within the past year
     rand(1..4).times do
-      ht_insert = ht.sample
-      ht_returned = bm.hashtags.first_or_create!(tag: ht_insert) 
-      Tagmap.create!(hashtag_id: ht_returned.id, bookmark_id: bm.id)
+      ht_instance = ht.sample
+      ht_obj = Hashtag.first_or_create(tag: ht_instance)
+      bm.tagmaps.create(bookmark_id: bm.id, hashtag_id: ht_obj.id)
     end
   end
 end

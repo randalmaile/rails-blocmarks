@@ -11,8 +11,8 @@ describe User do
   end
 
   it "should only save users to the db that have unique email address" do
-    @user.save!
-    @user2.save!
+    @user.save
+    @user2.save
     @user2.should_not be_valid
   end
 
@@ -22,7 +22,7 @@ describe User do
   end
 
   it "should set password_salt and password_hash in the db" do
-    @user.save!
+    @user.save
     @user.password_salt.should_not eq(nil)
     @user.password_hash.should_not eq(nil)
   end

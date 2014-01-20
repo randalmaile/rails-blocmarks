@@ -1,9 +1,5 @@
 %h1 Hashtags#index
-- @hashtag_groups.each do |tag, collection|
-  %p
-    = link_to tag, " " # collection_link(collection)  I need to somehow link to the hashtag show action and pass in the scoped collection to the controller!!
+- @hashtags.each do |hashtag|
+  %p= link_to hashtag.tag, hashtag_path(hashtag)
   %ul
-    - collection.each do |hashtag|
-      %li
-        = hashtag.bookmarks.first.url
-
+    = render partial: "bookmarks/bookmark", collection: hashtag.bookmarks

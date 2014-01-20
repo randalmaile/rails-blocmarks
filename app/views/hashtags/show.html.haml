@@ -1,5 +1,6 @@
 %h1 Hashtags#show
 %p.lead= @hashtag.tag
-- @bookmarks.each do |bookmark|
-  = bookmark.id
+%ul 
+  = render @bookmarks
+
   

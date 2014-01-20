@@ -6,6 +6,9 @@
       %ul 
         - for message in @user.errors.full_messages
           %li= message
+  %p
+    = f.label :name
+    = f.text_field :name
   %p 
     = f.label :email
     = f.text_field :email

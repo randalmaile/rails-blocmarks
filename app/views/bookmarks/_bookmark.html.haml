@@ -1,3 +1,5 @@
-  %small= bookmark.description
-    %br/ 
-    Saved by #{bookmark.user.name} #{time_ago_in_words(bookmark.created_at)} ago
+= bookmark.url
+= bookmark.title
+%small= bookmark.description
+%br/ 
+Saved by #{bookmark.user.name} #{time_ago_in_words(bookmark.created_at)} ago

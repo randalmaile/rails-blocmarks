@@ -13,7 +13,6 @@ class BookmarksController < ApplicationController
   end
 
   def create
-    # @hashtag = current_user.bookmarks.hashtags.where(tag: )
     @bookmark = current_user.bookmarks.build(params[:bookmark])
     if @bookmark.save
       flash[:notice] =  "Your bookmark has been saved."

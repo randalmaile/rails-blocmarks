@@ -1,5 +1,6 @@
-= bookmark.url
-= bookmark.title
+%p= bookmark.url
+%p= bookmark.title
 %small= bookmark.description
 %br/ 
 Saved by #{bookmark.user.name} #{time_ago_in_words(bookmark.created_at)} ago
+= link_to "Delete", bookmark, method: :delete

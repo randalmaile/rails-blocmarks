@@ -9,11 +9,12 @@ class BookmarksController < ApplicationController
 
   def new
     @bookmark = Bookmark.new
+    @build_hashtag = @bookmark.tagmaps.build.build_hashtag
   end
 
   def create
+    # @hashtag = current_user.bookmarks.hashtags.where(tag: )
     @bookmark = current_user.bookmarks.build(params[:bookmark])
-
     if @bookmark.save
       flash[:notice] =  "Your bookmark has been saved."
       redirect_to @bookmark
@@ -40,7 +41,7 @@ class BookmarksController < ApplicationController
   def destroy
     @bookmark = Bookmark.find(params[:id])
     if @bookmark.destroy
-      # redirect_to ???, notice: "xxx was deleted successfully.
+      redirect_to hashtags_path, notice: "Bookmark was deleted successfully."
     else
       flash[:error] = "There was a problem deleting the bookmark"
       render :show

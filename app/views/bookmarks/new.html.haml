@@ -1,29 +1,4 @@
 %h1 New Bookmark
 .row
   .span8
-    = form_for @bookmark, html: {class: 'form-horizontal' } do |f| 
-      - if @bookmark.errors.any?
-        .alert.alert-block
-          %h4= "There are #{pluralize(@bookmark.errors.count, "error")}"
-          %ul 
-            - @bookmark.errors.full_messages.each do |msg|
-              %li= msg 
-      = control_group_tag(@bookmark.errors[:url]) do
-        = f.label :url, class: 'control-label'
-        .controls
-          = f.text_field :url
-      = control_group_tag(@bookmark.errors[:title]) do
-        = f.label :title, class: 'control-label'
-        .controls
-          = f.text_field :title
-      = control_group_tag(@bookmark.errors[:description]) do
-        = f.label :description, class: 'control-label'
-        .controls
-          = f.text_area :description, rows: 8
-      = f.fields_for :tagmaps do |ff|
-        = ff.label :tag
-        .controls
-          = ff.text_field :tag
-      .control-group
-        .controls
-          = f.submit "Save", class: 'btn'
+    = render partial: 'form', locals: { bookmark: @bookmark }

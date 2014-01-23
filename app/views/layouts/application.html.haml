@@ -1,21 +1,21 @@
 !!!
 %html
   %head
-    %title Blocmarks
-    = stylesheet_link_tag    "application", :media => "all"
+    %meta{:name => "viewport", :content => "width=device-width, initial-scale=1.0"}
+    %title= content_for?(:title) ? yield(:title) : 'Blocmarks'
+    %meta{:name => "description", :content => "#{content_for?(:description) ? yield(:description) : 'Blocmarks'}"}
+    = stylesheet_link_tag "application", media: "all"
     = javascript_include_tag "application"
     = csrf_meta_tags
   %body
-    .container
-    .user_nav
-      - if current_user
-        Logged in as #{current_user.email}
-        = link_to "Logout", log_out_path 
-      - else
-        = link_to "Sign up", sign_up_path 
-        = link_to "Log in", log_in_path
-      %ul.nav.nav-tabs
-        %li= link_to "Blocmarks!", root_path
-        = render partial: "shared/flash_messages" if !flash.empty?
-      = yield
-      = javascript_include_tag "application"
+    %header
+      = render 'layouts/navigation'
+    %main{:role => "main"}
+      .container
+        = render 'layouts/messages'
+        = yield
+
+
+
+
+

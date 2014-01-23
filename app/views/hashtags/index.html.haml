@@ -1,6 +1,7 @@
 %h1 Hashtags#index
 - @hashtags.each do |hashtag|
-  %p= link_to hashtag.tag, hashtag_path(hashtag)
-  %ul
-    = render partial: "bookmarks/bookmark", collection: hashtag.bookmarks.limit(5)
+  - unless hashtag.bookmarks.empty?
+    %div.row
+      %h3= link_to hashtag.tag, hashtag_path(hashtag) 
+      = render partial: "bookmarks/bookmark", collection: hashtag.bookmarks.limit(5)
 

@@ -17,14 +17,10 @@
     = f.label :description, class: 'control-label'
     .controls
       = f.text_area :description, rows: 8
-  = f.fields_for :tagmaps do |ff|
-    = ff.fields_for :hashtag do |fff|     
-      = fff.label :tag
-      .controls
-        = fff.text_field :tag
-      - if ff.object.persisted?
-        = ff.check_box :_destroy 
-        = ff.label :_destroy, "Destroy"
+  = control_group_tag(bookmark.errors[:tags_string]) do
+    = f.label :tags_string, class: 'control-label'
+    .controls
+      = f.text_field :tags_string
   .control-group
     .controls
       = f.submit "Save", class: 'btn'

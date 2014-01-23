@@ -6,8 +6,11 @@ Blocmarks::Application.routes.draw do
   root :to =>  'welcome#index'
   resources :users
   resources :sessions
-  resources :bookmarks
+  resources :bookmarks do
+    resources :favorites, only: [:create, :destroy]
+  end
   resources :hashtags, only: [:index, :show]
+
  
   # The priority is based upon order of creation:
   # first created -> highest priority.

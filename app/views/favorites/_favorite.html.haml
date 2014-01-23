@@ -1,0 +1,10 @@
+.favorite
+  - if favorite = current_user.favorited(bookmark)
+    = link_to [bookmark, favorite], class: 'btn btn-small', method: :delete do
+      %i.icon-star-empty>
+      \&#160; Unfavorite
+  - else
+    = link_to [bookmark, Favorite.new], class: 'btn btn-small', method: :post do
+      %i.icon-star>
+      \&#160; Favorite
+

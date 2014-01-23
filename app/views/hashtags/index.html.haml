@@ -4,4 +4,3 @@
     %div.row
       %h3= link_to hashtag.tag, hashtag_path(hashtag) 
       = render partial: "bookmarks/bookmark", collection: hashtag.bookmarks.limit(5)
-

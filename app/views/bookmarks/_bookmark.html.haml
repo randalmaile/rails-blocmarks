@@ -4,3 +4,4 @@
   %br/ 
   -# Saved by #{bookmark.user.name} #{time_ago_in_words(bookmark.created_at)} ago
   = link_to "Delete", bookmark, method: :delete
+  = render partial: "favorites/favorite", locals: { bookmark: bookmark}

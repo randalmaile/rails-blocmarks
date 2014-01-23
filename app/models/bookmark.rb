@@ -3,11 +3,10 @@ class Bookmark < ActiveRecord::Base
   belongs_to :user
   has_many :tagmaps
   has_many :hashtags, :through => :tagmaps, dependent: :destroy
+  has_many :favorites, dependent: :destroy
 
   validates :url, :format => URI::regexp(%w(http https)), presence: true
   validates :title, presence: true
-
-
 
   def tags_string
     self.hashtags.map {|h| h.tag}.join(" ")

@@ -39,6 +39,8 @@ gem 'haml-rails', '~> 0.3.4'
 gem 'newrelic_rpm'
 gem 'will_paginate', '~> 3.0.5'
 gem 'omniauth-facebook'
+gem "querystring", "~> 0.1.0"
+gem "embedly", "~> 1.9.0"
 
 # To use ActiveModel has_secure_password
 gem 'bcrypt-ruby', :require => 'bcrypt'

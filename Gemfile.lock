@@ -43,6 +43,10 @@ GEM
     coffee-script-source (1.6.3)
     database_cleaner (1.2.0)
     diff-lcs (1.2.5)
+    embedly (1.9.0)
+      json
+      oauth
+      querystring
     erubis (2.7.0)
     execjs (2.0.2)
     factory_girl (4.3.0)
@@ -79,6 +83,7 @@ GEM
     multi_json (1.8.4)
     multipart-post (1.2.0)
     newrelic_rpm (3.7.1.180)
+    oauth (0.4.7)
     oauth2 (0.8.1)
       faraday (~> 0.8)
       httpauth (~> 0.1)
@@ -101,6 +106,7 @@ GEM
       slop (~> 3.4)
     pry-rails (0.3.2)
       pry (>= 0.9.10)
+    querystring (0.1.0)
     rack (1.4.5)
     rack-cache (1.2)
       rack (>= 0.4)
@@ -170,6 +176,7 @@ DEPENDENCIES
   bootstrap-sass (~> 3.0.3.0)
   coffee-rails (~> 3.2.1)
   database_cleaner
+  embedly (~> 1.9.0)
   factory_girl_rails (~> 4.0)
   faker
   haml-rails (~> 0.3.4)
@@ -178,6 +185,7 @@ DEPENDENCIES
   omniauth-facebook
   pg
   pry-rails
+  querystring (~> 0.1.0)
   rails (= 3.2.13)
   rails_layout
   rspec-rails

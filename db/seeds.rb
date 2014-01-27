@@ -1,27 +1,15 @@
 require 'faker'
+ 
 
-######
-# Create 10 users AND create 10 posts for each of them
+# 5.times do 
+#   tag = Faker::Lorem.words(1).first
+#   Hashtag.create(tag: tag)
+# end
 
-## create a hashtag array
-
-# def grab_tag
-#   ht = []
-#   10.times do
-#     ht << Faker::Lorem.words(1).first
-#   end
-#   ht
-# end 
-
-5.times do 
-  tag = Faker::Lorem.words(1).first
-  Hashtag.create(tag: tag)
-end
-
-def get_random_hashtag
-  ht = Hashtag.all
-  ht.sample
-end
+# def get_random_hashtag
+#   ht = Hashtag.all
+#   ht.sample
+# end
 
 
 4.times do # - Outer iterator 10 times pass block to do - first part is to create new user
@@ -37,19 +25,19 @@ end
   # #Inner iterator - Create 10 bookmarks per user -
 
 
-  3.times do # - create 10 new bookmarks for every user
-    bm = u.bookmarks.create(
-      url: Faker::Internet.url,
-      title: Faker::Lorem.words(rand(1..4)).join(" "),
-      description: Faker::Lorem.paragraph(1)
-    ) # - create a bookmark within the scope of a unique user instance    
-    bm.update_attribute(:created_at, Time.now - rand(600..31536000)) # set the created_at to a time within the past year
-    rand(1..3).times do
-      hashtag = get_random_hashtag
-      # Tagmap.first_or_create(hashtag_id: hashtag.id, bookmark_id: bm.id)
-      Tagmap.create(hashtag_id: hashtag.id, bookmark_id: bm.id)
-    end
-  end
+  # 3.times do # - create 10 new bookmarks for every user
+  #   bm = u.bookmarks.create(
+  #     url: Faker::Internet.url,
+  #     title: Faker::Lorem.words(rand(1..4)).join(" "),
+  #     description: Faker::Lorem.paragraph(1)
+  #   ) # - create a bookmark within the scope of a unique user instance    
+  #   bm.update_attribute(:created_at, Time.now - rand(600..31536000)) # set the created_at to a time within the past year
+  #   rand(1..3).times do
+  #     hashtag = get_random_hashtag
+  #     # Tagmap.first_or_create(hashtag_id: hashtag.id, bookmark_id: bm.id)
+  #     Tagmap.create(hashtag_id: hashtag.id, bookmark_id: bm.id)
+  #   end
+  # end
 end
 
 User.create(

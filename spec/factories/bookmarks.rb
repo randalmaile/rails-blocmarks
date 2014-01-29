@@ -2,16 +2,14 @@
 require 'faker'
 
 FactoryGirl.define do 
-  factory :bookmark do |f|
-    f.url { Faker::Internet.url }
-    f.title { Faker::Lorem.words(1).first}
-    f.description { Faker::Lorem.paragraph(1) }
-    f.user
+  factory :bookmark do
+    url "http://google.com"
+    title "Google"
+    description "A pretty damn amazing company."
+    user
   end
 
-  factory :invalid_bookmark, parent: :bookmark do |f|
-    f.url { Faker::Lorem.words(1) }
-    f.title nil
-    f.description nil
+  factory :invalid_bookmark, parent: :bookmark do
+    url "google.com"
   end
 end

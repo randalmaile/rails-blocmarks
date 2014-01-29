@@ -4,7 +4,6 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @my_bookmarks = @user.bookmarks
     @favorited_bookmarks = Bookmark.favorited(current_user)
-    binding.pry
   end
 
   def new

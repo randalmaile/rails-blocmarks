@@ -184,6 +184,7 @@ DEPENDENCIES
   newrelic_rpm
   omniauth-facebook
   pg
+  pry
   pry-rails
   querystring (~> 0.1.0)
   rails (= 3.2.13)

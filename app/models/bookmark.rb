@@ -6,6 +6,8 @@ class Bookmark < ActiveRecord::Base
   has_many :favorites, dependent: :destroy
 
   validates :url, :format => URI::regexp(%w(http https)), presence: true
+  scope :favorited, lambda { |user| joins(:favorites).where(user_id: user.id) }
+
 
   def tags_string
     self.hashtags.map {|h| h.tag}.join(" ")

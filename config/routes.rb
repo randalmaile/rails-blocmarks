@@ -5,12 +5,12 @@ Blocmarks::Application.routes.draw do
   get "sign_up" => "users#new", :as => "sign_up" # remind me what the :as part is again....
   resources :users
   resources :sessions
-  resources :bookmarks do
+  resources :bookmarks, except: [:index] do
     resources :favorites, only: [:create, :destroy]
   end
   resources :hashtags, only: [:index, :show]
 
-  root to: 'hashtags#index'
+  root to: 'welcome#index'
 
  
   # The priority is based upon order of creation:

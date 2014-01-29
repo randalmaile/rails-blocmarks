@@ -1,7 +1,4 @@
 class BookmarksController < ApplicationController
-  def index
-    @bookmarks = Bookmark.all
-  end
 
   def show
     @bookmark = Bookmark.find(params[:id])
@@ -9,7 +6,6 @@ class BookmarksController < ApplicationController
 
   def new
     @bookmark = Bookmark.new
-    @build_hashtag = @bookmark.tagmaps.build.build_hashtag
   end
 
   def create

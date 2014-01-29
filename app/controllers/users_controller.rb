@@ -2,9 +2,10 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @bookmarks = @user.bookmarks
+    @my_bookmarks = @user.bookmarks
+    @favorited_bookmarks = Bookmark.favorited(current_user)
+    binding.pry
   end
-
 
   def new
     @user = User.new

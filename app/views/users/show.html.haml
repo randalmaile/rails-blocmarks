@@ -1,1 +1,5 @@
-= render partial: "bookmarks/bookmark", collection: @bookmarks
+%h3 My Bookmarks
+= render partial: "bookmarks/bookmark", collection: @my_bookmarks
+
+%h3 Favorited Bookmarks
+= render partial: "bookmarks/bookmark", collection: @favorited_bookmarks

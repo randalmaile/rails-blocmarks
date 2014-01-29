@@ -1,10 +1,10 @@
 .col-md-3 
   %a{href: "#{bookmark.url}", target: "_blank"} 
     = embedlyThumb_or_default(bookmark.embedly)
-
   %p <strong> Title: </strong> #{bookmark.embedly[:title]}
   %br/ 
-  -# Saved by #{bookmark.user.name} #{time_ago_in_words(bookmark.created_at)} ago
+  Saved by #{bookmark.user.name} #{time_ago_in_words(bookmark.created_at)} ago
   = link_to "Delete", bookmark, method: :delete
   = link_to "Edit", edit_bookmark_path(bookmark)
-  = render partial: "favorites/favorite", locals: { bookmark: bookmark}
+  - unless bookmark.user == current_user
+    = render partial: "favorites/favorite", locals: { bookmark: bookmark }

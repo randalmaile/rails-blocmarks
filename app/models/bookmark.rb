@@ -6,7 +6,11 @@ class Bookmark < ActiveRecord::Base
   has_many :favorites, dependent: :destroy
 
   validates :url, :format => URI::regexp(%w(http https)), presence: true
+  default_scope order('created_at Desc')
   scope :favorited, lambda { |user| joins(:favorites).where(user_id: user.id) }
+
+  before_save :get_embedly_data
+  serialize :metadata, Hash
 
 
   def tags_string
@@ -18,28 +22,18 @@ class Bookmark < ActiveRecord::Base
     self.hashtags = values.split(" ").map { |s| Hashtag.where(tag: s).first_or_create }
   end
 
-  def embedly 
+
+private
+  def get_embedly_data
     embedly_api = set_key
     obj = embedly_api.oembed(:url => self.url)
-    @urlEmbed = { url: obj[0].provider_url, 
+    h = { url: obj[0].provider_url, 
               description: obj[0].description,
               title: obj[0].title,
               thumbnail_width: obj[0].thumbnail_width,
               thumbnail_url: obj[0].thumbnail_url }
+    self.metadata = h
   end
-
-  # def self.embedly  Was wondering if I could make a collection of all the embedlified bookmarks!! 
-  #   url_array = []
-  #   self.all.each do |bookmark|
-  #     url_array << bookmark.url
-  #   end
-  #   embedly_api = self.new_embedly_api  
-  #   objs = embedly_api.oembed(urls: url_array)
-  #   json_obj = JSON.pretty_generate(objs.collect{|o| o.marshal_dump})
-  #   binding.pry
-  # end
-
-private
   def set_key
      Embedly::API.new :key => 'b8e7570e696445cab85629255a2bcaaa',
     :user_agent => 'Mozilla/5.0 (compatible; mytestapp/1.0; rmaile2000@yahoo.com)'

@@ -4,6 +4,7 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @my_bookmarks = @user.bookmarks
     @favorited_bookmarks = Bookmark.favorited(current_user)
+    authorize! :show, @user, message: "You need to be a member to do that"
   end
 
   def new
@@ -17,5 +18,17 @@ class UsersController < ApplicationController
     else
       render :new
     end
+  end
+
+  def edit
+    @user = User.find(params[:id])
+  end
+
+  def update
+
+  end
+
+  def destroy
+
   end
 end

@@ -12,7 +12,7 @@ class BookmarksController < ApplicationController
     @bookmark = current_user.bookmarks.build(params[:bookmark])
     if @bookmark.save
       flash[:notice] =  "Your bookmark has been saved."
-      redirect_to @bookmark
+      redirect_to hashtags_path
     else
       flash[:error] = "There was a problem saving your bookmark, please try again."
       render :new

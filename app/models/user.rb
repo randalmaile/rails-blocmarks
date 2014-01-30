@@ -6,6 +6,7 @@ class User < ActiveRecord::Base
 
   attr_accessor :password
   before_save :encrypt_password
+  before_create :set_member
 
   validates_confirmation_of :password
   validates_presence_of :password, :on => :create
@@ -31,5 +32,17 @@ end
 def favorited(bookmark)
   self.favorites.where(bookmark_id: bookmark.id).first
 end
+
+ROLES = %w[member moderator admin]
+def role?(base_role)
+  role.nil? ? false : ROLES.index(base_role.to_s) <= ROLES.index(role)
+end 
+
+private
+
+def set_member
+  self.role = "member"
+end
+
 
 end

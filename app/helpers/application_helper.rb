@@ -7,11 +7,7 @@ module ApplicationHelper
     end
   end
 
-  def embedlyThumb_or_default(embedly)
-    if embedly[:thumbnail_url] == nil 
-      image_tag("thumb.png", size: "260")
-    else
-      image_tag(embedly[:thumbnail_url], width: "260")
-    end
+  def bookmark_thumbnail(metadata)
+    image_tag(metadata[:thumbnail_url] || "thumb.png", width: "260")
   end
 end

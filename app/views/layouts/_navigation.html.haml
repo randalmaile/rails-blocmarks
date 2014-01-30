@@ -1,20 +1,46 @@
 -# navigation styled for Bootstrap 3.0
-%nav.navbar.navbar-default.navbar-fixed-top
-  .container
-    .navbar-header
-      %button.navbar-toggle{"data-target" => ".navbar-collapse", "data-toggle" => "collapse", :type => "button"}
-        %span.sr-only Toggle navigation
-        %span.icon-bar
-        %span.icon-bar
-        %span.icon-bar
-      = link_to 'Home', root_path, class: 'navbar-brand'
-    .collapse.navbar-collapse
-      %ul.nav.navbar-nav
-        = render 'layouts/navigation_links'
+%nav.navbar.navbar-default{role: "navigation"}
+  / Brand and toggle get grouped for better mobile display
+  .navbar-header
+    %button.navbar-toggle{"data-target" => "#bs-example-navbar-collapse-1", "data-toggle" => "collapse", type: "button"}
+      %span.sr-only Toggle navigation
+      %span.icon-bar
+      %span.icon-bar
+      %span.icon-bar
+    = link_to 'Blocmarks', root_path, class: 'navbar-brand'
+  / Collect the nav links, forms, and other content for toggling
+  #bs-example-navbar-collapse-1.collapse.navbar-collapse
+    %ul.nav.navbar-nav
+      %li
+        = link_to "Community", hashtags_path
       - if current_user
-        Logged in as #{current_user.email}
-        = link_to "Logout", log_out_path
-        = link_to "My Blocmarks", current_user
-      - else
-        = link_to "Sign up", sign_up_path
-        = link_to "Log in", log_in_path
+        %li
+          = link_to "My Library", current_user
+        %li 
+          %a{:href => ""} Favorites 
+    %ul.nav.navbar-nav.navbar-right
+      %li
+        - if current_user
+          %p.navbar-text.navbar-right
+            Welcome
+            = link_to current_user.name, edit_user_path(current_user), class: 'navbar-link'
+      %li 
+        %a{href: "#"} Link
+      %li.dropdown
+        %a.dropdown-toggle{"data-toggle" => "dropdown", href: "#"}
+          Account Actions
+          %b.caret
+        %ul.dropdown-menu
+          - if current_user
+            %li 
+              = link_to "Logout", log_out_path
+          - else
+            %li
+              = link_to "Sign up", sign_up_path
+            %li 
+              = link_to "Log in", log_in_path
+          %li.divider
+          %li
+            %a{href: "#"} Another link
+
+

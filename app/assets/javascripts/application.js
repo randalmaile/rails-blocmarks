@@ -10,7 +10,9 @@
 // Read Sprockets README (https://github.com/sstephenson/sprockets#sprockets-directives) for details
 // about supported directives.
 //
+// Loads all Bootstrap javascripts
+//= require bootstrap
+// This crap of including jquery below bootstrap is a total bug!!!!!!!!!!!!
 //= require jquery
 //= require jquery_ujs
-//= require bootstrap
 //= require_tree .

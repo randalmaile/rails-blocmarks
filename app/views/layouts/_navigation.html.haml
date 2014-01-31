@@ -33,12 +33,10 @@
             %li 
               = link_to "Edit account", edit_user_path(current_user)
             %li 
-              = link_to "Logout", log_out_path
+              = link_to "Sign out", log_out_path
           - else
-            %li
-              = link_to "Sign up", sign_up_path
             %li 
-              = link_to "Log in", log_in_path
+              = link_to "Sign in", log_in_path
           -# %li.divider
 
 

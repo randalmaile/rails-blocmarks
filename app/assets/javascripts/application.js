@@ -14,7 +14,7 @@
 
 
 // This crap of including jquery below bootstrap is a total bug!!!!!!!!!!!!
-//= require bootstrap
 //= require jquery
 //= require jquery_ujs
+//= require bootstrap
 //= require_tree .

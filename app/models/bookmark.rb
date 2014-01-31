@@ -7,7 +7,7 @@ class Bookmark < ActiveRecord::Base
 
   validates :url, :format => URI::regexp(%w(http https)), presence: true
   default_scope order('created_at Desc')
-  scope :favorited, lambda { |user| joins(:favorites).where(user_id: user.id) }
+  scope :favorited, lambda { |user| joins(:favorites).where('favorites.user_id' => user.id) }
 
   before_save :get_embedly_data
   serialize :metadata, Hash
@@ -18,7 +18,7 @@ class Bookmark < ActiveRecord::Base
   end
 
   def tags_string=(values)
-    # this is how you change the relation - right through the join table.
+    # this is how you change the relation - right through the join table, without having to manipulate it directly
     self.hashtags = values.split(" ").map { |s| Hashtag.where(tag: s).first_or_create }
   end
 

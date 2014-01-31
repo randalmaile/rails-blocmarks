@@ -13,36 +13,36 @@ class User < ActiveRecord::Base
   validates_presence_of :email
   validates_uniqueness_of :email
 
-def self.authenticate(email, password)
-  user = find_by_email(email)
-  if user && user.password_hash == BCrypt::Engine.hash_secret(password, user.password_salt)
-    user
-  else
-    nil
+  def self.authenticate(email, password)
+    user = find_by_email(email)
+    if user && user.password_hash == BCrypt::Engine.hash_secret(password, user.password_salt)
+      user
+    else
+      nil
+    end
   end
-end
 
-def encrypt_password
-  if password.present?
-    self.password_salt = BCrypt::Engine.generate_salt
-    self.password_hash = BCrypt::Engine.hash_secret(password, password_salt)
+  def encrypt_password
+    if password.present?
+      self.password_salt = BCrypt::Engine.generate_salt
+      self.password_hash = BCrypt::Engine.hash_secret(password, password_salt)
+    end
   end
-end
 
-def favorited(bookmark)
-  self.favorites.where(bookmark_id: bookmark.id).first
-end
+  def favorited(bookmark)
+    self.favorites.where(bookmark_id: bookmark.id).first
+  end
 
-ROLES = %w[member moderator admin]
-def role?(base_role)
-  role.nil? ? false : ROLES.index(base_role.to_s) <= ROLES.index(role)
-end 
+  ROLES = %w[member moderator admin]
+  def role?(base_role)
+    role.nil? ? false : ROLES.index(base_role.to_s) <= ROLES.index(role)
+  end 
 
-private
+  private
 
-def set_member
-  self.role = "member"
-end
+  def set_member
+    self.role = "member"
+  end
 
 
 end

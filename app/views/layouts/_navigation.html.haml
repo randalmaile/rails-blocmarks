@@ -24,8 +24,6 @@
           %p.navbar-text.navbar-right
             Welcome
             = link_to current_user.name, edit_user_path(current_user), class: 'navbar-link'
-      %li 
-        %a{href: "#"} Link
       %li.dropdown
         %a.dropdown-toggle{"data-toggle" => "dropdown", href: "#"}
           Account Actions
@@ -41,8 +39,7 @@
               = link_to "Sign up", sign_up_path
             %li 
               = link_to "Log in", log_in_path
-          %li.divider
-          %li
-            %a{href: "#"} Another link
+          -# %li.divider
+
 
 

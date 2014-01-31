@@ -5,6 +5,6 @@ class HashtagsController < ApplicationController
 
   def show
     @hashtag = Hashtag.find(params[:id])
-    @bookmarks = @hashtag.bookmarks
+    @bookmarks = @hashtag.bookmarks.paginate(page: params[:page], per_page: 3)
   end
 end

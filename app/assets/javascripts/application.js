@@ -11,8 +11,10 @@
 // about supported directives.
 //
 // Loads all Bootstrap javascripts
-//= require bootstrap
+
+
 // This crap of including jquery below bootstrap is a total bug!!!!!!!!!!!!
+//= require bootstrap
 //= require jquery
 //= require jquery_ujs
 //= require_tree .

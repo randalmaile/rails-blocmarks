@@ -15,9 +15,9 @@
         = link_to "Community", hashtags_path
       - if current_user
         %li
-          = link_to "My Library", current_user
+          = link_to "My Library", user_library_path(current_user)
         %li 
-          %a{:href => ""} Favorites 
+          = link_to "Favorites", user_favorites_path(current_user)
     %ul.nav.navbar-nav.navbar-right
       %li
         - if current_user
@@ -32,6 +32,8 @@
           %b.caret
         %ul.dropdown-menu
           - if current_user
+            %li 
+              = link_to "Edit account", edit_user_path(current_user)
             %li 
               = link_to "Logout", log_out_path
           - else

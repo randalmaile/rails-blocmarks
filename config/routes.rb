@@ -3,7 +3,7 @@ Blocmarks::Application.routes.draw do
   get "log_out" => "sessions#destroy", :as => "log_out"
   get "log_in" => "sessions#new", :as => "log_in"
   get "sign_up" => "users#new", :as => "sign_up" # remind me what the :as part is again....
-  resources :users
+  resources :users, except: [:index, :show]
   resources :sessions
   resources :bookmarks, except: [:index] do
     resources :favorites, only: [:create, :destroy]
@@ -12,7 +12,9 @@ Blocmarks::Application.routes.draw do
 
   get 'community', to: 'hashtags#index', as: :hashtags
   get 'tags/:id', to: 'hashtags#show', as: :hashtag
-
+  get 'favorites/:id', to: 'users#favorites', as: :user_favorites
+  get 'my_library/:id', to: 'users#my_library', as: :user_library
+ 
   root to: 'welcome#index'
 
  

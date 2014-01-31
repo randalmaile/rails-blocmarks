@@ -1,10 +1,12 @@
-.col-md-3 
+.col-md-2
   %a{href: "#{bookmark.url}", target: "_blank"} 
     = bookmark_thumbnail(bookmark.metadata)
   %p <strong> Title: </strong> #{bookmark.metadata[:title]}
   %br/ 
   Saved by #{bookmark.user.name} #{time_ago_in_words(bookmark.created_at)} ago
-  = link_to "Delete", bookmark, method: :delete
-  = link_to "Edit", edit_bookmark_path(bookmark)
-  - if current_user
+  - if can? :delete, bookmark
+    = link_to "Delete", bookmark, method: :delete
+  - if can? :edit, bookmark
+    = link_to "Edit", edit_bookmark_path(bookmark)
+  - if current_user 
     = render partial: "favorites/favorite", locals: { bookmark: bookmark }

@@ -9,6 +9,7 @@ class Ability
     if user.role? :member
       can :manage, Bookmark, :user_id => user.id
       can :manage, Favorite, :user_id => user.id
+      can :manage, User, :id => user.id
       can :read, User
     end
 

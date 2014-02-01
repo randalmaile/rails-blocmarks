@@ -8,7 +8,6 @@ Blocmarks::Application.routes.draw do
   resources :bookmarks, except: [:index] do
     resources :favorites, only: [:create, :destroy]
   end
-  # resources :hashtags, only: [:index, :show]
 
   get 'community', to: 'hashtags#index', as: :hashtags
   get 'tags/:id', to: 'hashtags#show', as: :hashtag

@@ -66,14 +66,12 @@ describe BookmarksController do
     end 
 
   describe "PUT #update" do 
-    before :each do 
-      def put_valid
-        put :update, id: @bookmark, bookmark: attributes_for(:bookmark, title: "Google")
-      end
+    def put_valid
+      put :update, id: @bookmark, bookmark: attributes_for(:bookmark, title: "Google")
+    end
 
-      def put_invalid
-        put :update, id: @bookmark, bookmark: attributes_for(:invalid_bookmark, title: "Google")
-      end
+    def put_invalid
+      put :update, id: @bookmark, bookmark: attributes_for(:invalid_bookmark, title: "Google")
     end
     context "with valid attributes" do 
       it "locates the requested @bookmark" do 

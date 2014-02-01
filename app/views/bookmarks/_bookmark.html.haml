@@ -1,7 +1,9 @@
 .col-md-2
   %a{href: "#{bookmark.url}", target: "_blank"} 
     = bookmark_thumbnail(bookmark.metadata)
-  %p <strong> Title: </strong> #{bookmark.metadata[:title]}
+  %p 
+    %strong Title:
+      #{bookmark.metadata[:title]}
   %br/ 
   Saved by #{bookmark.user.name} #{time_ago_in_words(bookmark.created_at)} ago
   - if can? :delete, bookmark

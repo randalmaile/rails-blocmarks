@@ -3,8 +3,6 @@
 FactoryGirl.define do 
   factory :bookmark do
     url "http://google.com"
-    title "Google"
-    description "A pretty damn amazing company."
     user
   end
 

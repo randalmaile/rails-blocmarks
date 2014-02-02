@@ -45,8 +45,7 @@ describe BookmarksController do
       it "should redirect to index with a notice of successful save" do 
         post_valid
         flash[:notice].should_not be_nil
-        response.should be_success # revisit!!
-        # response.should redirect_to @bookmark 
+        response.should be_success
       end 
     end
 

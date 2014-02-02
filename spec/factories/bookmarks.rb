@@ -3,7 +3,7 @@
 FactoryGirl.define do 
   factory :bookmark do
     url "http://google.com"
-    user
+    user 
   end
 
   factory :invalid_bookmark, parent: :bookmark do

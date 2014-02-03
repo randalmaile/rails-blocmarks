@@ -22,7 +22,6 @@ class Bookmark < ActiveRecord::Base
     self.hashtags = values.split(" ").map { |s| Hashtag.where(tag: s).first_or_create }
   end
 
-
 private
 
   def get_embedly_data

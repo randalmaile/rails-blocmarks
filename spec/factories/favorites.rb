@@ -2,7 +2,7 @@
 
 FactoryGirl.define do
   factory :favorite do
-    bookmark nil
-    user nil
+    bookmark 
+    user 
   end
 end

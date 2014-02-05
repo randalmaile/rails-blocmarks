@@ -1,6 +1,6 @@
 class User < ActiveRecord::Base
   attr_accessible :email, :password, :password_confirmation, :name
-  has_many :bookmarks
+  has_many :bookmarks, dependent: :destroy
   has_many :hashtags
   has_many :favorites, dependent: :destroy
 

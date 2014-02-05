@@ -9,14 +9,6 @@
     = f.label :url, class: 'control-label'
     .controls
       = f.text_field :url
-  -# = control_group_tag(bookmark.errors[:title]) do
-  -#   = f.label :title, class: 'control-label'
-  -#   .controls
-  -#     = f.text_field :title
-  -# = control_group_tag(bookmark.errors[:description]) do
-  -#   = f.label :description, class: 'control-label'
-  -#   .controls
-  -#     = f.text_area :description, rows: 8
   = control_group_tag(bookmark.errors[:tags_string]) do
     = f.label :tags_string, class: 'control-label'
     .controls

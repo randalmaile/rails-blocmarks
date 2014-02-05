@@ -1,6 +1,5 @@
 # spec/features/visitor_signs_up_spec.rb
 require 'spec_helper'
-include Features::SessionHelpers
 
 feature 'Visitor signs up' do
   scenario 'with valid email and password' do
@@ -22,5 +21,4 @@ feature 'Visitor signs up' do
     sign_up_with 'Jimbo jim', '', 'sassafras', 'sassafras'
     expect(page).to have_content('Email can\'t be blank')
   end
-
 end

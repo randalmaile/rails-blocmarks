@@ -15,10 +15,11 @@ end
 group :development, :test do
   gem 'rspec-rails'
   gem 'factory_girl_rails', '~> 4.0'
+end
+
+group :test do
   gem 'database_cleaner'
   gem "capybara", "~> 2.2.1"
-end
-group :test do
   gem 'pry' 
 end
 

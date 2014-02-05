@@ -3,7 +3,7 @@
     = bookmark_thumbnail(bookmark.metadata)
   %p 
     %strong Title:
-      #{bookmark.metadata[:title]}
+    #{bookmark.metadata[:title]}
   %br/ 
   Saved by #{bookmark.user.name} #{time_ago_in_words(bookmark.created_at)} ago
   - if can? :delete, bookmark

@@ -48,7 +48,7 @@ class UsersController < ApplicationController
   end
 
   def destroy
-    @user = Bookmark.find(params[:id])
+    @user = User.find(params[:id])
     if @user.destroy
       redirect_to root_url, notice: "User was deleted successfully."
     else

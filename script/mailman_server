@@ -1,0 +1,12 @@
+#!/usr/bin/env ruby
+require "rubygems"
+require "bundler/setup"
+require "mailman"
+
+Mailman::Application.run do 
+  default do
+    hashtag = message.body.decoded
+    @bookmark = Bookmark.new(url: message.subject, tags_string: hashtag)
+    @bookmark.save!
+  end
+end

@@ -1,12 +1,25 @@
 #!/usr/bin/env ruby
 require "rubygems"
 require "bundler/setup"
+require 'active_support'
 require "mailman"
+
+Mailman.config.pop3 = {
+  server: 'pop.gmail.com', port: 995, ssl: true,
+  username: 'loquaciousbuzz@gmail.com',
+  password: 'L0quacious3uzz'
+}
 
 Mailman::Application.run do 
   default do
-    hashtag = message.body.decoded
-    @bookmark = Bookmark.new(url: message.subject, tags_string: hashtag)
-    @bookmark.save!
+    decoded_body = nil
+    message.parts.each {|part| decoded_body = part.decode_body if part.content_type.start_with?("text/plain") }
+    from = message.from
+    subject_array = message.subject.split(/\W+/)
+    subject = subject_array.join(" ")
+    url = /(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?/.match(decoded_body)
+    Bookmark.through_email(from, subject, url[0])
   end
 end
+
+

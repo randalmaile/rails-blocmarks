@@ -41,10 +41,10 @@ require 'faker'
 end
 
 User.create(
-    name: "Randal Maile", 
-    email: "rmaile2000@yahoo.com", 
-    password: "got2go", 
-    password_confirmation: "got2go") 
+    name: "Loq Buzz", 
+    email: "loquaciousbuzz@gmail.com", 
+    password: "L0quacious3uzz", 
+    password_confirmation: "L0quacious3uzz") 
 
 
 puts "Seed finished"

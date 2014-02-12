@@ -1,7 +1,22 @@
-Date: Fri, 30 Dec 2022 14:00:00 -0800
-From: foo@example.com
-Subject: ruby rails
-To: support@example.com
+                                                                                                                                                                                                                                                               
+MIME-Version: 1.0
+Received: by 10.194.154.230 with HTTP; Tue, 11 Feb 2014 22:43:10 -0800 (PST)
+Date: Tue, 11 Feb 2014 22:43:10 -0800
+Delivered-To: loquaciousbuzz@gmail.com
+Message-ID: <CAHtUoidhwXSAseE_Qe4Jd+ZDroY5pCPOFW=A399fPfkF8Mbdpg@mail.gmail.com>
+Subject: hello world
+From: loquaciousbuzz loquaciousbuzz <loquaciousbuzz@gmail.com>
+To: loquaciousbuzz loquaciousbuzz <loquaciousbuzz@gmail.com>
+Content-Type: multipart/alternative; boundary=047d7bfceff4d974a904f22fe213
 
-http://yahoo.com
+--047d7bfceff4d974a904f22fe213
+Content-Type: text/plain; charset=ISO-8859-1
 
+This is the bookmark I want to add: http://gin.com
+
+--047d7bfceff4d974a904f22fe213
+Content-Type: text/html; charset=ISO-8859-1
+
+<div dir="ltr">This is the bookmark I want to add: <a href="http://gin.com">http://gin.com</a></div>
+
+--047d7bfceff4d974a904f22fe213--

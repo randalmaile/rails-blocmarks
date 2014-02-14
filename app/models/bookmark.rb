@@ -21,7 +21,7 @@ class Bookmark < ActiveRecord::Base
     self.hashtags = values.split(" ").map { |s| Hashtag.where(tag: s).first_or_create }
   end
 
-  def self.create_through_email(user_email,tags,url)
+  def self.create_through_email(user_email, tags, url)
     if user = User.where(email: user_email).first
       @bookmark = user.bookmarks.create(url: url, tags_string: tags) 
     end
@@ -31,5 +31,7 @@ class Bookmark < ActiveRecord::Base
 
   def get_embedly_data
     self.metadata = EmbedlyUrlService.new(self.url).as_hash
+    self.title = EmbedlyUrlService.new(self.url).title
+    self.description = EmbedlyUrlService.new(self.url).description
   end
 end

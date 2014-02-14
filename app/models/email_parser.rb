@@ -22,7 +22,7 @@ class EmailParser
         decoded_body = @message.body.decoded
       end
     end
-    url = /(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?/.match(decoded_body)
+    url = /\b(([\w-]+:\/\/?|www[.])[^\s()<>]+(?:\([\w\d]+\)|([^[:punct:<>"]\s]|\/)))/.match(decoded_body)
     url[0]
   end
 end

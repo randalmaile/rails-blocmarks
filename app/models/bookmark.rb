@@ -12,7 +12,6 @@ class Bookmark < ActiveRecord::Base
   before_save :get_embedly_data
   serialize :metadata, Hash
 
-
   def tags_string
     self.hashtags.map {|h| h.tag}.join(" ")
   end
@@ -22,10 +21,10 @@ class Bookmark < ActiveRecord::Base
     self.hashtags = values.split(" ").map { |s| Hashtag.where(tag: s).first_or_create }
   end
 
-  def self.through_email(from,subject,url)
-    user = User.where(email: from).first
-    @bookmark = user.bookmarks.build(url: url, tags_string: subject)
-    @bookmark.save
+  def self.create_through_email(user_email,tags,url)
+    if user = User.where(email: user_email).first
+      @bookmark = user.bookmarks.create(url: url, tags_string: tags) 
+    end
   end
 
   private

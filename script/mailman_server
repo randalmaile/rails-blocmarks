@@ -11,14 +11,9 @@ Mailman.config.pop3 = {
 }
 
 Mailman::Application.run do 
-  default do
-    decoded_body = nil
-    message.parts.each {|part| decoded_body = part.decode_body if part.content_type.start_with?("text/plain") }
-    from = message.from
-    subject_array = message.subject.split(/\W+/)
-    subject = subject_array.join(" ")
-    url = /(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?/.match(decoded_body)
-    Bookmark.through_email(from, subject, url[0])
+  default do 
+    parser = EmailParser.new(message)
+    Bookmark.create_through_email(parser.user_email, parser.tags, parser.url)
   end
 end
 

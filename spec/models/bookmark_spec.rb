@@ -1,4 +1,5 @@
 require 'spec_helper'
+require 'mail'
 
 describe Bookmark do
   before do
@@ -55,9 +56,29 @@ describe Bookmark do
       title: "Yahoo",
       thumbnail_width: 200,
       thumbnail_url: "https://s3.yimg.com/dh/ap/default/130909/y_200_a.png" }
-    @bookmark_serialize.metadata = hash
-    @bookmark_serialize.save!
-    @bookmark_serialize.reload
-    expect(@bookmark_serialize.metadata).to eq(hash)  
+      @bookmark_serialize.metadata = hash
+      @bookmark_serialize.save!
+      @bookmark_serialize.reload
+      expect(@bookmark_serialize.metadata).to eq(hash)  
+    end
+
+  context "via email" do
+    before do
+      @user = User.create(email: "loquaciousbuzz@gmail.com", password: "L0quacious3uzz", password_confirmation: "L0quacious3uzz", name: "Loquacious Buzz")
+    end
+
+    it "will create a bookmark with a valid user" do
+      @complex_body_message = Mail.read('spec/emails/complex_body.eml')
+      @parser = EmailParser.new(@complex_body_message)   
+      through_email = Bookmark.create_through_email(@parser.user_email, @parser.tags, @parser.url)
+      expect(through_email).to be_valid
+    end
+
+    it "will fail to create a bookmark with an invalid user" do
+      @unknown_user_message = Mail.read('spec/emails/unknown_user.eml')
+      @parser = EmailParser.new(@unknown_user_message)
+      through_email = Bookmark.create_through_email(@parser.user_email, @parser.tags, @parser.url)
+      expect(through_email).to be_nil
+    end
   end
 end

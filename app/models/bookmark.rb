@@ -30,8 +30,9 @@ class Bookmark < ActiveRecord::Base
   private
 
   def get_embedly_data
-    self.metadata = EmbedlyUrlService.new(self.url).as_hash
-    self.title = EmbedlyUrlService.new(self.url).title
-    self.description = EmbedlyUrlService.new(self.url).description
+    embedly_url_service = EmbedlyUrlService.new(self.url)
+    self.metadata = embedly_url_service.as_hash
+    self.title = embedly_url_service.title
+    self.description = embedly_url_service.description
   end
 end

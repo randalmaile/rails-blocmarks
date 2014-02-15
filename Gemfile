@@ -45,8 +45,8 @@ gem 'omniauth-facebook'
 gem "querystring", "~> 0.1.0"
 gem "embedly", "~> 1.9.0"
 gem 'cancan'
-
 gem 'mailman', require: false
+gem 'figaro'
 
 # To use ActiveModel has_secure_password
 gem 'bcrypt-ruby', :require => 'bcrypt'

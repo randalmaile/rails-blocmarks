@@ -16,3 +16,6 @@
 
 # Ignore ceratin directories
 /.sass-cache/
+
+# Ignore application configuration
+/config/application.yml

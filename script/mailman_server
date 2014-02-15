@@ -1,14 +1,16 @@
 #!/usr/bin/env ruby
 require "rubygems"
 require "bundler/setup"
-require 'active_support'
+require "active_support"
 require "mailman"
 
-Mailman.config.pop3 = {
+
+Mailman.config.pop3 =  {
   server: 'pop.gmail.com', port: 995, ssl: true,
-  username: 'loquaciousbuzz@gmail.com',
-  password: 'L0quacious3uzz'
+  username: ENV['GMAIL_USERNAME'],
+  password: ENV['GMAIL_PASSWORD']
 }
+
 
 Mailman::Application.run do 
   default do 

@@ -3,7 +3,6 @@ require 'mail'
 
 describe Bookmark do
   before do
-    # @bookmark = create(:bookmark)
     @bookmark = build(:bookmark)
     @bookmark_invalid = build(:invalid_bookmark)
   end

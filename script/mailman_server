@@ -11,6 +11,8 @@ Mailman.config.pop3 =  {
   password: ENV["GMAIL_PASSWORD"]
 }
 
+Mailman.config.poll_interval = 0
+
 
 
 Mailman::Application.run do 

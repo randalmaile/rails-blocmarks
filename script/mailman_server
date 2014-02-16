@@ -7,9 +7,10 @@ require "mailman"
 
 Mailman.config.pop3 =  {
   server: 'pop.gmail.com', port: 995, ssl: true,
-  username: ENV['GMAIL_USERNAME'],
-  password: ENV['GMAIL_PASSWORD']
+  username: ENV["GMAIL_USERNAME"],
+  password: ENV["GMAIL_PASSWORD"]
 }
+
 
 
 Mailman::Application.run do 
